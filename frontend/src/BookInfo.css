@@ -47,6 +47,10 @@
     padding: 10px;
 }
 
+.book-info p {
+  margin: 4px 0;
+}
+
 .book-edit {
     flex: 1;
     /* border: 1px solid #ccc; */

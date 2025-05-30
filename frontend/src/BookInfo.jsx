@@ -25,6 +25,7 @@ const BookInfo = () => {
                     <div className='book-info'>
                         <h2> 도서 1</h2>
                         <p>저자 A</p>
+                        <p>카테고리</p>
                         <p>등록 2025년 05월 29일</p>
                         <p>수정 2025년 05월 29일</p>
                     </div>
