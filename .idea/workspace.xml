@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="224f09b4-57a2-4975-b1d8-e43079d8a494" name="Changes" comment="front back 연결부 api 기본 템플릿 - 3">
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api.js" afterDir="false" />
+    <list default="true" id="224f09b4-57a2-4975-b1d8-e43079d8a494" name="Changes" comment="메인화면 라우팅 연결">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/bookRegist.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/detail.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +39,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -73,7 +79,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.Project1Application.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "front-hm",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Desktop/aivle/aivle_4_project",
@@ -117,7 +123,7 @@
       <option name="presentableId" value="Default" />
       <updated>1748505977383</updated>
       <workItem from="1748505978697" duration="1394000" />
-      <workItem from="1748567663159" duration="9228000" />
+      <workItem from="1748567663159" duration="10534000" />
     </task>
     <task id="LOCAL-00001" summary="init front using create react-app">
       <option name="closed" value="true" />
@@ -159,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748575791657</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="메인화면 라우팅 연결">
+      <option name="closed" value="true" />
+      <created>1748588576794</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1748588576794</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,6 +196,7 @@
     <MESSAGE value="front back 연결부 api 기본 템플릿" />
     <MESSAGE value="front back 연결부 api 기본 템플릿 -2" />
     <MESSAGE value="front back 연결부 api 기본 템플릿 - 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="front back 연결부 api 기본 템플릿 - 3" />
+    <MESSAGE value="메인화면 라우팅 연결" />
+    <option name="LAST_COMMIT_MESSAGE" value="메인화면 라우팅 연결" />
   </component>
 </project>
