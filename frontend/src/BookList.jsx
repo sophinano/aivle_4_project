@@ -19,7 +19,7 @@ export default function BookList() {
               <img
                 src={book.imageUrl && book.imageUrl.trim() !== '' ? book.imageUrl : defaultImage}
                 alt={book.title}
-                className="book-image"
+                className="book-list-image"
               />
               <div className="book-title">{book.title}</div>
             </Link>
