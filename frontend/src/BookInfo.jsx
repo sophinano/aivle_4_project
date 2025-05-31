@@ -52,6 +52,7 @@ const BookInfo = () => {
                         <h2> {book.title} </h2>
                         <p> {book.author} </p>
                         <p> {book.createdAt} </p>
+                        <p> {book.genre} </p>
                     </div>
                     <div className='book-edit'>
                         <button className="book-button">수정</button>
