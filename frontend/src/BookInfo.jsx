@@ -1,13 +1,31 @@
 import './BookInfo.css'
+import { useNavigate, useParams  } from 'react-router-dom';
+import { getBook } from './api';
+import { useEffect, useState } from 'react'
 
 const BookInfo = () => {
+    const navigate = useNavigate()
+    const { id } = useParams();
+    const [book, setBook] = useState()
+
+    useEffect(() => {
+        getBook(id).then(
+            data => {
+                setBook(data)
+            }
+        )
+    }, [id])
+    if (!book) {
+        return <div>로딩 중...</div>;  // 데이터 없으면 로딩 표시
+    } 
+
     return (
         <div style={{
             marginTop: "1em"
         }}>
             {/* 북 상세페이지 */}
             <div className="book-header">
-                <button className="book-main-button">메인</button>
+                <button className="book-main-button" onClick={() => navigate('/')}>메인</button>
             </div>
             <div style={{
                 display: "flex",
@@ -23,10 +41,9 @@ const BookInfo = () => {
                         }}></div>
                     </div>
                     <div className='book-info'>
-                        <h2> 도서 1</h2>
-                        <p>저자 A</p>
-                        <p>등록 2025년 05월 29일</p>
-                        <p>수정 2025년 05월 29일</p>
+                        <h2> {book.title} </h2>
+                        <p> {book.author} </p>
+                        <p> {book.createdAt} </p>
                     </div>
                     <div className='book-edit'>
                         <button className="book-button">수정</button>
@@ -38,7 +55,7 @@ const BookInfo = () => {
                         textAlign: "left"
                     }}>내용</h2>   
                     <div className='book-content'>
-                        도서 내용
+                        {book.content}
                     </div>                   
                 </div>
                 
