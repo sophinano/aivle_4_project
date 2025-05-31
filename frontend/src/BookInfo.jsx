@@ -2,11 +2,17 @@ import './BookInfo.css'
 import { useNavigate, useParams  } from 'react-router-dom';
 import { getBook } from './api';
 import { useEffect, useState } from 'react'
+import { deleteBook } from './api';
 
 const BookInfo = () => {
     const navigate = useNavigate()
     const { id } = useParams();
     const [book, setBook] = useState()
+
+    const handleDelete = () => {
+        deleteBook(id)
+        navigate('/'); 
+    };      
 
     useEffect(() => {
         getBook(id).then(
@@ -18,6 +24,8 @@ const BookInfo = () => {
     if (!book) {
         return <div>로딩 중...</div>;  // 데이터 없으면 로딩 표시
     } 
+
+
 
     return (
         <div style={{
@@ -47,7 +55,10 @@ const BookInfo = () => {
                     </div>
                     <div className='book-edit'>
                         <button className="book-button">수정</button>
-                        <button className="book-button" style={{backgroundColor: "#FFCCCC"}}>삭제</button>
+                        <button className="book-button" 
+                        style={{backgroundColor: "#FFCCCC"}}
+                        onClick = {() => {handleDelete()}}
+                    >삭제</button>
                     </div>
                 </div>
                 <div className='book-content-box'>
