@@ -1,33 +1,33 @@
 const Base_URL = 'http://localhost:8080';
 
-async function getBooks() {
-    const response = await fetch(`${Base_URL}/api/books`);
-    return  response.json();
+export async function getBooks(){
+    const response = await fetch(`${Base_URL}/books`)
+    return await response.json();
 }
 
-async function getBook(id){
-    const response = await fetch(`${Base_URL}/api/books/${id}`);
-    return  response.json();
+export async function getBook(id){
+    const response = await fetch(`${Base_URL}/books/${id}`);
+    return await response.json();
 }
 
-async function postBook(postData){
-    const response = await fetch(`${Base_URL}/api/books`, {
+export async function postBook(postData){
+    const response = await fetch(`${Base_URL}/books`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(postData),
     })
 }
 
-async function putBook(putData){
-    const response = await fetch(`${Base_URL}/api/books`, {
+export async function putBook(putData){
+    const response = await fetch(`${Base_URL}/books`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(putData),
     })
 }
 
-async function deleteBook(){
-    const response = await fetch(`${Base_URL}/api/books`, {
+export async function deleteBook(id){
+    const response = await fetch(`${Base_URL}/books/${id}`, {
         method: 'DELETE',
     })
 }
