@@ -55,7 +55,9 @@ const BookInfo = () => {
                         <p> {book.genre} </p>
                     </div>
                     <div className='book-edit'>
-                        <button className="book-button">수정</button>
+                        <button className="book-button" onClick={() => {
+                            navigate(`/books/edit/${id}`)
+                        }}>수정</button>
                         <button className="book-button" 
                         style={{backgroundColor: "#FFCCCC"}}
                         onClick = {() => {handleDelete()}}

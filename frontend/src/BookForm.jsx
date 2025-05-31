@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import './BookForm.css';
-import { postBook } from './api';
+import { postBook, getBook, putBook } from './api';
 
 function BookForm() {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const handleCancel = () => {
     navigate('/');  //페이지 이동
@@ -26,6 +27,14 @@ function BookForm() {
     "coverImageUrl": " "
   });
 
+  useEffect(() => {
+    if(id){
+      getBook(id).then(data =>{
+        setFormData(data)
+      })
+    }
+  }, [id])
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -36,8 +45,13 @@ function BookForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(JSON.stringify(formData))
-    postBook(formData);
+    if(id){
+      putBook(id, formData)
+    }
+    else{
+      postBook(formData);
+    }
+   
   };
 
 

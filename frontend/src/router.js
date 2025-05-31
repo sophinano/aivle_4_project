@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     {
         path: '/books/new',
         element: <BookForm />
+    },
+    {
+        path: '/books/edit/:id',
+        element: <BookForm />
     }
 ]);
 

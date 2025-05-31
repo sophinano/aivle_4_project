@@ -18,8 +18,8 @@ export async function postBook(postData){
     })
 }
 
-export async function putBook(putData){
-    const response = await fetch(`${Base_URL}/books`, {
+export async function putBook(id, putData){
+    const response = await fetch(`${Base_URL}/books/${id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(putData),
