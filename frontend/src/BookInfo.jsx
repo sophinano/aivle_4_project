@@ -10,8 +10,10 @@ const BookInfo = () => {
     const [book, setBook] = useState()
 
     const handleDelete = () => {
-        deleteBook(id)
-        navigate('/'); 
+        if (window.confirm('정말 삭제하시겠습니까?')){
+            deleteBook(id)
+            navigate('/'); 
+        }
     };      
 
     useEffect(() => {
