@@ -1,5 +1,10 @@
 package com.bookmanage.project1.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
