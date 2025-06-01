@@ -33,6 +33,10 @@
   margin: 20px 0;
 }
 
+.search-category {
+  width: 100px;
+}
+
 .search-input {
   padding: 8px;
   font-size: 16px;

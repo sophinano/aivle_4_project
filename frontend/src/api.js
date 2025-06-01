@@ -10,6 +10,17 @@ export async function getBook(id){
     return await response.json();
 }
 
+const mapping = {
+    'title' : 'search',
+    'genre' : 'genre',
+    'author' : 'author'
+}
+
+export async function getSearchBook(key, val) {
+    const response = await fetch(`${Base_URL}/books/${mapping[key]}?${key}=${val}`);
+    return await response.json();
+}
+
 export async function postBook(postData){
     const response = await fetch(`${Base_URL}/books`, {
         method: 'POST',
