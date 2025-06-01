@@ -1,14 +1,16 @@
 package com.bookmanage.project1.service;
 
-import com.bookmanage.project1.domain.Books;
+import com.bookmanage.project1.dto.BookRequestDTO;
+import com.bookmanage.project1.dto.BookResponseDTO;
 import java.util.List;
 
 public interface BooksService {
-    List<Books> getAllBooks();
-    List<Books> searchByTitle(String title);
-    Books addBook(Books book);
-    Books getBookById(Long id);
-    Books updateBook(Long id, Books updatedBook);
+    List<BookResponseDTO> getAllBooks();
+    BookResponseDTO getBookById(Long id);
+    BookResponseDTO addBook(BookRequestDTO bookDTO);
+    BookResponseDTO updateBook(Long id, BookRequestDTO updatedDTO);
     void deleteBook(Long id);
-    List<Books> searchByGenre(String genre);
+    List<BookResponseDTO> searchByTitle(String title);
+    List<BookResponseDTO> searchByGenre(String genre);
+    List<BookResponseDTO> searchByAuthor(String author);
 }
