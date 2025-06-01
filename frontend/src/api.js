@@ -17,7 +17,7 @@ const mapping = {
 }
 
 export async function getSearchBook(key, val) {
-    const response = await fetch(`${Base_URL}/books/${mapping[key]}?${key}=${val}`);
+    const response = await fetch(`${Base_URL}/books/${key}?${key}=${val}`);
     return await response.json();
 }
 
