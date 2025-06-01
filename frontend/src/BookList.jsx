@@ -5,13 +5,16 @@ import './BookList.css';
 import { getBooks, getSearchBook } from './api';
 
 export default function BookList(props) {
-  const [books, setBooks] = useState([]);    
+  const [books, setBooks] = useState([]);
+  const [loding, setLoding] = useState();
 
   useEffect(() => {
+    setLoding(true)
     if(!props.searchVal){
       getBooks().then(
         data => {
           setBooks(data)
+          setLoding(false)
         }
       )
     }
@@ -19,12 +22,13 @@ export default function BookList(props) {
       getSearchBook(props.searchKey, props.searchVal).then(
         data => {
           setBooks(data)
+          setLoding(false)
         }
       )
     }
   }, [props])
-
-  if(books.length == 0) return<h3> 도서가 존재하지 않습니다. </h3>
+  if(loding) return <h3>로딩중...</h3>
+  if(books.length === 0) return<h3> 도서가 존재하지 않습니다. </h3>
 
   return (
     <div style={{ overflowX: 'auto' }}>
