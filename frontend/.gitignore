@@ -22,3 +22,14 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# IntelliJ
+.idea/
+../.idea/
+*.iml
+
+# Gradle
+.gradle/
+build/
+
+# VSCode
+.vscode/
