@@ -6,6 +6,7 @@
   margin-left: 10vw;
   margin-right: 10vw;
   font-family: sans-serif;
+  text-align: left;
 }
 
 .top-section {
@@ -23,11 +24,11 @@
 
 .cover-preview {
   margin-top: 60px;
-  /*width: 20vw;*/
   aspect-ratio: 13 / 20;
-  min-width: 160px;
-  max-width: 260px;
-  border: 2px solid #ccc;
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #fff;
 }

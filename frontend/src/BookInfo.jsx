@@ -9,6 +9,11 @@ const BookInfo = () => {
     const { id } = useParams();
     const [book, setBook] = useState()
 
+    const fommatTime = (iso) => {
+        const date = new Date(iso);
+        return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+    }
+
     const handleDelete = () => {
         if (window.confirm('정말 삭제하시겠습니까?')){
             deleteBook(id)
@@ -43,19 +48,39 @@ const BookInfo = () => {
             }}>
                 <div className='book-info-box'>
                     <div className='book-image'>
-                        <h2>생성 이미지</h2>
-                        <div style={{
+                        <h2>도서 표지</h2>
+                        <img src={book.coverImageUrl} style={{
+                            height: "300px",
+                            width: "200px",
                             border: "1px solid #ccc",
-                            width: "120px",
-                            height: "180px",
-                        }}></div>
+                            objectFit: "cover",
+                            borderRadius: "10px"
+                        }} />
                     </div>
                     <div className='book-info'>
-                        <h2> {book.title} </h2>
-                        <p> {book.author} </p>
-                        <p> {book.createdAt} </p>
-                        <p> {book.genre} </p>
-                    </div>
+                        <h2 style={{ marginBottom: "0.5em", fontWeight: "bold", fontSize: "2em" }}>{book.title}</h2>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: "0.7em",
+                            fontSize: "1.1em",
+                            textAlign: "left"
+                        }}>
+                            <div>
+                                <span style={{ fontWeight: "bold", color: "#555" }}>저자</span>
+                                <span style={{ marginLeft: "0.5em" }}>{book.author}</span>
+                            </div>
+                            <div>
+                                <span style={{ fontWeight: "bold", color: "#555" }}>장르</span>
+                                <span style={{ marginLeft: "0.5em" }}>{book.genre}</span>
+                            </div>
+                            <div>
+                                <span style={{ fontWeight: "bold", color: "#555" }}>등록일</span>
+                                <span style={{ marginLeft: "0.5em" }}>{fommatTime(book.createdAt)}</span>
+                            </div>
+
+                        </div>
+                        </div>
                     <div className='book-edit'>
                         <button className="book-button" onClick={() => {
                             navigate(`/books/edit/${id}`)
