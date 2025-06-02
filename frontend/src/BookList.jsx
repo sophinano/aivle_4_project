@@ -3,10 +3,11 @@ import defaultImage from './default.png';
 import { Link } from 'react-router-dom';
 import './BookList.css';
 import { getBooks, getSearchBook } from './api';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function BookList(props) {
   const [books, setBooks] = useState([]);
-  const [loding, setLoding] = useState();
+  const [loding, setLoding] = useState(true);
   
   useEffect(() => {
     setLoding(true)
@@ -27,8 +28,12 @@ export default function BookList(props) {
       )
     }
   }, [props])
-  if(loding) return <h3>로딩중...</h3>
-  if(books.length === 0) return<h3> 도서가 존재하지 않습니다. </h3>
+  if(loding) {
+    return <CircularProgress style={{
+      color: "grey"
+    }}/>
+  }
+  if(!loding && books.length === 0) return<h3> 도서가 존재하지 않습니다. </h3>
 
   return (
     <div style={{ overflowX: 'auto' }}>

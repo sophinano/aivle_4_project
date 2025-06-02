@@ -3,6 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './BookForm.css';
 import { postBook, getBook, putBook } from './api';
 import { generateCoverImage } from './api'; 
+import CircularProgress from '@mui/material/CircularProgress';
+import defaultImage from './default.png';
 
 function BookForm() {
   const navigate = useNavigate();
@@ -105,9 +107,15 @@ function BookForm() {
           <div className="left-section">
             <div className="cover-preview">
               {isGeneratingImage ? (
-                <p>표지 이미지 생성 중...</p> // 로딩 중 메시지
+                <div style={{ marginTop: '130px', textAlign: 'center' }}>
+                  <CircularProgress />
+                </div>
               ) : formData.coverImageUrl ? ( // 이미지가 있으면 표시
-                <img src={formData.coverImageUrl} alt="도서 표지" style={{ width: '100%', maxWidth: '300px', height: 'auto', border: '1px solid #ddd', borderRadius: '4px' }} />
+                <img src={formData.coverImageUrl && formData.coverImageUrl.trim() !== '' ? formData.coverImageUrl : defaultImage} 
+                alt="도서 표지" 
+                style={{
+                   width: '200px', height: '300px', border: '1px solid #ddd', borderRadius: '10px' , objectFit: "cover"
+                  }} />
               ) : ( // 이미지가 없으면 플레이스홀더
                 <p>표지 이미지가 여기에 표시됩니다.</p>
               )}

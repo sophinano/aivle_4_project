@@ -31,7 +31,8 @@
 .book-image {
     flex: 1;
     /* border: 1px solid #ccc; */
-    height: 300px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +60,7 @@
     min-height: 80px;
     width: 80%;
     text-align: left;
+    border-radius: 4px;
 }
 
 .book-content-box {
