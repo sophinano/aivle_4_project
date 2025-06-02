@@ -1,19 +1,21 @@
 .book-button {
-    margin-right: 8px;
     background-color: #eee;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    width: 60px;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 .book-main-button {
     margin-left: 2em;
     background-color: #eee;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
     cursor: pointer;
-    width: 60px;
+    font-weight: bold;
 }
 
 .book-header {
@@ -55,12 +57,14 @@
 }
 
 .book-content {
-    border: 2px solid #ccc;
     padding: 10px;
     min-height: 80px;
     width: 80%;
     text-align: left;
-    border-radius: 4px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    box-sizing: border-box;
 }
 
 .book-content-box {
