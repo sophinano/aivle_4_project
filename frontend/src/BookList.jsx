@@ -7,7 +7,7 @@ import { getBooks, getSearchBook } from './api';
 export default function BookList(props) {
   const [books, setBooks] = useState([]);
   const [loding, setLoding] = useState();
-
+  
   useEffect(() => {
     setLoding(true)
     if(!props.searchVal){
@@ -43,7 +43,7 @@ export default function BookList(props) {
           <div key={index} className="book">
             <Link to={`/books/${book.bookId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
               <img
-                src={book.imageUrl && book.imageUrl.trim() !== '' ? book.imageUrl : defaultImage}
+                src={book.coverImageUrl && book.coverImageUrl.trim() !== '' ? book.coverImageUrl : defaultImage}
                 alt={book.title}
                 className="book-list-image"
               />

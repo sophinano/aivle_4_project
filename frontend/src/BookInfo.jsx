@@ -44,11 +44,16 @@ const BookInfo = () => {
                 <div className='book-info-box'>
                     <div className='book-image'>
                         <h2>생성 이미지</h2>
-                        <div style={{
+                        {/* <div style={{
                             border: "1px solid #ccc",
                             width: "120px",
                             height: "180px",
-                        }}></div>
+                        }}></div> */}
+                        <img src={book.coverImageUrl} style={{
+                            height: "300px",
+                            width: "200px",
+                            border: "1px solid #ccc",
+                        }} />
                     </div>
                     <div className='book-info'>
                         <h2> {book.title} </h2>

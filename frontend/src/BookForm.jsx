@@ -76,13 +76,24 @@ function BookForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !formData.title.trim() ||
+      !formData.author.trim() ||
+      !formData.genre.trim() ||
+      formData.genre === "선택" ||
+      !formData.content.trim()
+    ) {
+      alert('필수 항목을 모두 입력해주세요.');
+      return;
+    }
+
     if(id){
       putBook(id, formData)
     }
     else{
       postBook(formData);
     }
-   
+    handleCancel();
   };
 
 
@@ -113,7 +124,7 @@ function BookForm() {
           <div className="right-section">
             
             <div className="btn-group top-buttons">
-              <button type="submit" className="btn" onClick={handleCancel}>등록</button>
+              <button type="submit" className="btn">등록</button>
               <button type="button" className="btn cancel" onClick={handleCancel}>취소</button>
             </div>
             <div className="form-group">
