@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './BookForm.css';
 import { postBook, getBook, putBook } from './api';
+import { generateCoverImage } from './api'; 
 
 function BookForm() {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ function BookForm() {
     "coverImageUrl": " "
   });
 
+  // 로딩 상태를 위한 state 추가
+  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
+
   useEffect(() => {
     if(id){
       getBook(id).then(data =>{
@@ -41,6 +45,33 @@ function BookForm() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  // !!! 이미지 생성 버튼 클릭 핸들러 !!!
+  const handleGenerateImage = async (e) => {
+    e.preventDefault(); // 버튼이 폼 내부에 있어도 폼 제출 방지
+
+    if (!formData.content.trim()) {
+      alert("이미지 생성을 위해 '내용'을 먼저 입력해주세요.");
+      return;
+    }
+
+    setIsGeneratingImage(true); // 이미지 생성 시작 시 로딩 상태 true
+
+    try {
+      // formData.content (textarea 내용)를 프롬프트로 백엔드에 요청
+      const imageUrl = await generateCoverImage(formData.content); 
+      setFormData(prev => ({
+        ...prev,
+        coverImageUrl: imageUrl, // 생성된 이미지 URL을 상태에 저장
+      }));
+      // alert("이미지 생성 성공!"); // 성공 알림은 선택 사항
+    } catch (error) {
+      // 오류는 이미 generateCoverImage 함수에서 처리하고 alert를 띄웁니다.
+      // 여기서는 추가적인 UI 처리만 필요할 수 있습니다.
+    } finally {
+      setIsGeneratingImage(false); // 이미지 생성 완료 시 로딩 상태 false
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -61,8 +92,22 @@ function BookForm() {
         <div className="top-section">
           
           <div className="left-section">
-            <div className="cover-preview" />
-            <button className="btn">표지 생성</button>
+            <div className="cover-preview">
+              {isGeneratingImage ? (
+                <p>표지 이미지 생성 중...</p> // 로딩 중 메시지
+              ) : formData.coverImageUrl ? ( // 이미지가 있으면 표시
+                <img src={formData.coverImageUrl} alt="도서 표지" style={{ width: '100%', maxWidth: '300px', height: 'auto', border: '1px solid #ddd', borderRadius: '4px' }} />
+              ) : ( // 이미지가 없으면 플레이스홀더
+                <p>표지 이미지가 여기에 표시됩니다.</p>
+              )}
+            </div>
+            <button className="btn" 
+              type="button"
+              onClick={handleGenerateImage}
+              disabled={isGeneratingImage} // 이미지 생성 중일 때는 버튼 비활성화
+            >
+              {isGeneratingImage ? '생성 중...' : '표지 생성'}
+            </button>
           </div>
 
           <div className="right-section">
