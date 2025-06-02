@@ -8,7 +8,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 export default function BookList(props) {
   const [books, setBooks] = useState([]);
   const [loding, setLoding] = useState(true);
-  
+
   useEffect(() => {
     setLoding(true)
     if(!props.searchVal){
@@ -28,35 +28,26 @@ export default function BookList(props) {
       )
     }
   }, [props])
+
   if(loding) {
-    return <CircularProgress style={{
-      color: "grey"
-    }}/>
+    return <CircularProgress style={{ color: "grey" }}/>
   }
-  if(!loding && books.length === 0) return<h3> 도서가 존재하지 않습니다. </h3>
+  if(!loding && books.length === 0) return <h3> 도서가 존재하지 않습니다. </h3>
 
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <div className="scroll-container" 
-      onWheel={e => {
-        if (e.deltaY !== 0) {
-          e.currentTarget.scrollLeft += e.deltaY;
-          e.preventDefault();
-        }
-      }}>
-        {books.map((book, index) => (
-          <div key={index} className="book">
-            <Link to={`/books/${book.bookId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <img
-                src={book.coverImageUrl && book.coverImageUrl.trim() !== '' ? book.coverImageUrl : defaultImage}
-                alt={book.title}
-                className="book-list-image"
-              />
-              <div className="book-title">{book.title}</div>
-            </Link>
-          </div>
-        ))}
-      </div>
+    <div className="book-list-grid">
+      {books.map((book, index) => (
+        <div key={index} className="book">
+          <Link to={`/books/${book.bookId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+            <img
+              src={book.coverImageUrl && book.coverImageUrl.trim() !== '' ? book.coverImageUrl : defaultImage}
+              alt={book.title}
+              className="book-list-image"
+            />
+            <div className="book-title">{book.title}</div>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }
